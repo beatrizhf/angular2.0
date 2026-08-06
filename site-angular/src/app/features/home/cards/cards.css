@@ -1,0 +1,119 @@
+:host {
+  --creme: #faf8f3;
+  --amarelo: #fde68a;
+  --amarelo-forte: #f0c33e;
+  --tinta: #2b2620;
+  --tinta-suave: #6b6255;
+  --vidro: rgba(255, 255, 255, 0.5);
+  --borda-vidro: rgba(255, 255, 255, 0.7);
+  display: block;
+  font-family: "Sora", sans-serif;
+}
+
+.projetos {
+  background: var(--creme);
+  padding: 100px 24px 120px;
+  text-align: center;
+}
+
+.rotulo {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--amarelo-forte);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.projetos h2 {
+  font-family: "Fraunces", serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-weight: 600;
+  color: var(--tinta);
+  margin: 12px 0 56px;
+}
+
+.grade-projetos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+  max-width: 1080px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.projeto {
+  background: var(--vidro);
+  border: 1px solid var(--borda-vidro);
+  border-radius: 22px;
+  padding: 20px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.projeto:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(43, 38, 32, 0.1);
+}
+
+.projeto-capa {
+  height: 160px;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, var(--amarelo) 0%, #fff6d8 100%);
+}
+
+.projeto h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--tinta);
+  margin-bottom: 8px;
+}
+
+.projeto p {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--tinta-suave);
+  margin-bottom: 18px;
+}
+
+.projeto-tecs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.projeto-tecs span {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(43, 38, 32, 0.06);
+  color: var(--tinta-suave);
+}
+
+:host-context(.escuro) .projetos {
+  background: #141210;
+}
+
+:host-context(.escuro) .projetos h2 {
+  color: var(--creme);
+}
+
+:host-context(.escuro) .projeto {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+:host-context(.escuro) .projeto h3 {
+  color: var(--creme);
+}
+
+:host-context(.escuro) .projeto p {
+  color: rgba(250, 248, 243, 0.6);
+}
+
+:host-context(.escuro) .projeto-tecs span {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(250, 248, 243, 0.7);
+}

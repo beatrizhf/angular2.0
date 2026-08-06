@@ -1,0 +1,93 @@
+:host {
+  --creme: #faf8f3;
+  --tinta: #2b2620;
+  --amarelo: #fde68a;
+  display: block;
+  font-family: "Sora", sans-serif;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  background: rgba(250, 248, 243, 0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(43, 38, 32, 0.08);
+  z-index: 300;
+}
+
+.marca {
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--tinta);
+  text-decoration: none;
+}
+
+.hamburguer {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.hamburguer span {
+  width: 22px;
+  height: 2px;
+  background: var(--tinta);
+  border-radius: 2px;
+}
+
+.tema {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(43, 38, 32, 0.12);
+  background: var(--amarelo);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.icone-lua {
+  display: none;
+}
+
+:host-context(.escuro) .icone-sol {
+  display: none;
+}
+
+:host-context(.escuro) .icone-lua {
+  display: block;
+}
+
+:host-context(.escuro) .nav {
+  background: rgba(38, 34, 30, 0.75);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+:host-context(.escuro) .marca {
+  color: var(--creme);
+}
+
+:host-context(.escuro) .hamburguer span {
+  background: var(--creme);
+}
+
+@media (max-width: 760px) {
+  .hamburguer {
+    display: flex;
+  }
+}

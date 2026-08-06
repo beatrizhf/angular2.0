@@ -1,0 +1,10 @@
+<div class="fundo" [class.visivel]="menu.aberto()" (click)="menu.fechar()"></div>
+
+<aside class="sidebar" [class.aberta]="menu.aberto()">
+  <nav class="links">
+    <a href="#home" (click)="menu.fechar()">Home</a>
+    <a href="#sobre" (click)="menu.fechar()">Sobre</a>
+    <a href="#projetos" (click)="menu.fechar()">Projetos</a>
+    <a href="#contato" (click)="menu.fechar()">Contato</a>
+  </nav>
+</aside>
