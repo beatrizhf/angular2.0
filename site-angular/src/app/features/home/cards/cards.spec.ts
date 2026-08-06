@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { Cards } from './cards';
+import { signal } from '@angular/core';
+import { Usuario } from '../../exercicio/array-usuarios/usuario';
 
 describe('Cards', () => {
   let component: Cards;
@@ -20,3 +21,20 @@ describe('Cards', () => {
     expect(component).toBeTruthy();
   });
 });
+
+export class Usuarios {
+
+  protected usuarios = signal<Usuario[]>([
+{
+  id: 1,
+  nome: 'Maria',
+  idade: 19
+  },
+
+  {
+    id: 2,
+    nome: 'João',
+    idade: 23
+  }
+])
+}

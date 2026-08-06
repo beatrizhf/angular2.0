@@ -47,6 +47,18 @@
   gap: 20px;
 }
 
+.aside-sidebar a {
+  color: var(--tinta);
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.aside-sidebar a:hover {
+  color: var(--amarelo-forte);
+}
+
 .links a {
   color: var(--tinta);
   text-decoration: none;
