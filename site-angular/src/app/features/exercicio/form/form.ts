@@ -15,6 +15,8 @@ export class Form {
     preco: null,
   })
 
+   protected itens = signal<Produto[]>([]); //*AQUI//*
+
   produtoForm = form(this.produtoModel);
 
   cadastrarProduto(event : SubmitEvent) {
@@ -23,5 +25,15 @@ export class Form {
     const produto = this.produtoModel();
 
     console.log(produto);
+
+    this.itens.update(valor => [...valor, produto]); //*AQUI//*
+
+    this.produtoModel.set({
+    titulo: '',
+    descricao: '',
+    preco: null,
+  });
   }
+
+
 }

@@ -1,0 +1,30 @@
+.formulario{
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 220px;
+    padding: 16px;
+}
+
+.listaItens{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 16px;
+    border: 1px solid #fffdf9;
+    border-radius: 8px;
+    background-color: #f8d36d7e;
+    font-family: 'Sora', sans-serif;
+}
+
+.listaItens h2{
+    font-size: 19px;
+    color: #000000;
+}

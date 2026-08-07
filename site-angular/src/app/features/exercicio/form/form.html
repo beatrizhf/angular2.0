@@ -1,9 +1,21 @@
 <p>form works!</p>
 
-<form>
-<input type="text" [formField]="produtoForm.titulo">
-<input type="text" [formField]="produtoForm.descricao">
-<input type="number" inputmode="numeric" [formField]="produtoForm.preco">
+<div class="formulario">
+    <form (submit)="cadastrarProduto($event)">
+<input type="text" placeholder="Título do Produto" [formField]="produtoForm.titulo">
+<input type="text" placeholder="Descrição do Produto" [formField]="produtoForm.descricao">
+<input type="number" inputmode="numeric" placeholder="Preço do Produto" [formField]="produtoForm.preco">
 
 <button>Cadastrar Produto</button>
 </form>
+
+<div class="listaItens">
+<h2>Lista de Produtos Cadastrados</h2>
+    @for (produto of itens(); track produto.titulo) {
+        <p>> {{produto.titulo}} | {{produto.descricao}} | R$ {{produto.preco}}</p>
+    }
+
+    @empty {
+        <p>Nenhum produto cadastrado.</p>
+    }
+</div>
