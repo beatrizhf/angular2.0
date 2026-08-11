@@ -1,0 +1,195 @@
+
+:host {
+  --creme: #fffdf9;
+  --amarelo: #fde68a;
+  --amarelo-forte: #f0c33e;
+  --tinta: #2b2620;
+  --tinta-suave: #6b6255;
+
+  display: block;
+  font-family: "Sora", sans-serif;
+}
+
+/* Fundo da tela */
+:host {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--creme);
+}
+
+/* Formulário */
+form {
+  width: min(90%, 400px);
+  padding: 40px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  background: #ffffff;
+  border: 1px solid rgba(240, 195, 62, 0.25);
+  border-radius: 24px;
+
+  box-shadow:
+    0 20px 50px rgba(43, 38, 32, 0.08),
+    0 4px 12px rgba(240, 195, 62, 0.08);
+
+  box-sizing: border-box;
+}
+
+/* Inputs */
+input {
+  width: 100%;
+  padding: 15px 16px;
+  box-sizing: border-box;
+
+  border: 1px solid #e8e1d5;
+  border-radius: 12px;
+
+  outline: none;
+  background: #fffefa;
+
+  color: var(--tinta);
+  font-family: inherit;
+  font-size: 14px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+input::placeholder {
+  color: var(--tinta-suave);
+  opacity: 0.65;
+}
+
+input:hover {
+  border-color: var(--amarelo-forte);
+}
+
+input:focus {
+  border-color: var(--amarelo-forte);
+  background: #fff;
+
+  box-shadow: 0 0 0 4px rgba(253, 230, 138, 0.35);
+}
+
+/* Botão */
+button {
+  width: 100%;
+  margin-top: 6px;
+  padding: 15px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: var(--amarelo);
+  color: var(--tinta);
+
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+button:hover {
+  background: var(--amarelo-forte);
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 20px rgba(240, 195, 62, 0.25);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Status do usuário */
+p {
+  margin: 4px 0 0;
+  padding: 12px 14px;
+
+  border-radius: 10px;
+
+  background: #fffbeb;
+  color: var(--tinta-suave);
+
+  font-size: 13px;
+  text-align: center;
+}
+
+
+/* =========================
+   MODO NOTURNO
+   ========================= */
+
+:host-context(.escuro) {
+  --creme: #141210;
+  --amarelo: #f5d76e;
+  --amarelo-forte: #e5bd3f;
+  --tinta: #f8f5ed;
+  --tinta-suave: #b8b0a3;
+}
+
+/* Fundo */
+:host-context(.escuro) {
+  background: #141210;
+}
+
+/* Formulário */
+:host-context(.escuro) form {
+  background: #1d1a17;
+  border-color: rgba(253, 230, 138, 0.12);
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.35),
+    0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Inputs */
+:host-context(.escuro) input {
+  background: #24211d;
+  border-color: #38332c;
+  color: var(--tinta);
+}
+
+:host-context(.escuro) input::placeholder {
+  color: var(--tinta-suave);
+}
+
+:host-context(.escuro) input:hover {
+  border-color: var(--amarelo-forte);
+}
+
+:host-context(.escuro) input:focus {
+  background: #29251f;
+  border-color: var(--amarelo-forte);
+
+  box-shadow: 0 0 0 4px rgba(253, 230, 138, 0.12);
+}
+
+/* Botão */
+:host-context(.escuro) button {
+  background: var(--amarelo);
+  color: #2b2620;
+}
+
+:host-context(.escuro) button:hover {
+  background: var(--amarelo-forte);
+  box-shadow: 0 8px 20px rgba(240, 195, 62, 0.15);
+}
+
+/* Mensagem de status */
+:host-context(.escuro) p {
+  background: #29251f;
+  color: rgba(250, 248, 243, 0.65);
+}
+

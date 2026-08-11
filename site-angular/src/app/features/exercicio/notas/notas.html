@@ -1,0 +1,22 @@
+<form (submit)="cadastrarAluno($event)">
+  <div>
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" [formField]="alunoForm.nome">
+  </div>
+  <div>
+    <label for="media">Média:</label>
+    <input type="number" id="media" [formField]="alunoForm.media" step="0.01">
+  </div>
+  <button type="submit">Cadastrar</button>
+</form>
+
+<div class="listaItens">
+<h2>Lista de Alunos Cadastrados</h2>
+    @for (aluno of alunos(); track aluno.nome) {
+        <p> Aluno: {{aluno.nome}} | Média: {{aluno.media}} | {{aluno.situacao}}</p>
+    }
+
+    @empty {
+        <p>Nenhum aluno cadastrado.</p>
+    }
+</div>
