@@ -1,7 +1,10 @@
 <form (submit)="efetuarLogin($event)">
 
+<input type="text" placeholder="Nome" [formField]="loginForm.nome">
 <input type="email" placeholder="Email" [formField]="loginForm.email">
 <input type="password" placeholder="Senha" [formField]="loginForm.senha">
+<input type="password" placeholder="Confirmação de Senha" [formField]="loginForm.confirma">
+<input type="date" placeholder="Nascimento" [formField]="loginForm.nascimento">
 
 <button>Login</button>
 

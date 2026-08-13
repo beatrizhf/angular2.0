@@ -1,9 +1,13 @@
 import { Component, signal } from '@angular/core';
 import { email, form, FormField, required } from '@angular/forms/signals';
+import { Data } from '@angular/router';
 
 interface loginInterface {
+  nome: string;
   email: string;
   senha: string;
+  confirma: string;
+  nascimento: string;
 }
 
 @Component({
@@ -12,11 +16,15 @@ interface loginInterface {
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
+
 export class Login {
 
 protected loginModel = signal<loginInterface>({
+  nome: '',
   email: '',
   senha: '',
+  confirma: '',
+  nascimento: '',
 
 });
 

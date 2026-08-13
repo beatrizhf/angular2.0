@@ -10,36 +10,41 @@ import { Alunos } from '../alunos';
 })
 
 export class Notas {
- alunoModel = signal<Alunos>({
+  alunoModel = signal<Alunos>({
     nome: '',
     media: null,
     situacao: '',
   })
 
-protected alunos = signal<Alunos[]>([]); //*AQUI//*
+  protected alunos = signal<Alunos[]>([]); //*AQUI//*
 
-alunoForm = form(this.alunoModel);
+  alunoForm = form(this.alunoModel);
 
 
-cadastrarAluno(event : SubmitEvent) {
-  event.preventDefault();
+  cadastrarAluno(event: SubmitEvent) {
+    event.preventDefault();
 
-  const aluno = this.alunoModel();
+    const aluno = this.alunoModel();
 
-  const situacao = aluno.media !== null && aluno.media >= 7 ? 'Aprovado' : 'Reprovado';
+    if (aluno.media === null || aluno.media < 0 || aluno.media > 10) {
+      alert('Média inválida');
+      return;
+    }
+    const situacao = aluno.media !== null && aluno.media >= 7 ? 'Aprovado' : 'Reprovado';
 
-  const alunoComSituacao: Alunos = {
+    const alunoComSituacao: Alunos = {
       ...aluno,
       situacao: situacao,
-  };
-  console.log(alunoComSituacao);
+    };
+    console.log(alunoComSituacao);
 
-  this.alunos.update(valor => [...valor, alunoComSituacao]); //*AQUI*//
+    this.alunos.update(valor => [...valor, alunoComSituacao]); //*AQUI*//
 
-  this.alunoModel.set({
-    nome: '',
-    media: null,
-    situacao: '',
-  });
+    this.alunoModel.set({
+      nome: '',
+      media: null,
+      situacao: '',
+    });
 
-}}
+  }
+}

@@ -1,0 +1,113 @@
+:host {
+  --creme: #fffdf9;
+  --amarelo: #fde68a;
+  --amarelo-forte: #f0c33e;
+  --tinta: #2b2620;
+  --tinta-suave: #6b6255;
+  font-family: "Sora", sans-serif;
+}
+
+/* Fundo da tela */
+:host {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--creme);
+}
+
+h2{
+    color: var(--tinta);
+    font-size: 1.5em;
+    text-align: center;
+}
+
+button {
+  width: 100%;
+  margin-top: 6px;
+  padding: 15px;
+  border: none;
+  border-radius: 12px;
+  background: #ebebeb;
+  color: var(--tinta);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  background: #b6b6b6;
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 20px rgba(240, 195, 62, 0.25);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+p {
+  margin: 4px 0 0;
+  padding: 20px 24px;
+  border-radius: 10px;
+  background: var(--amarelo);
+  color: var(--tinta);
+  font-size: 18px;
+  text-align: center;
+}
+
+.listaCandidatos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+
+/* =========================
+   MODO NOTURNO
+   ========================= */
+
+:host-context(.escuro) {
+  --creme: #141210;
+  --amarelo: #f5d76e;
+  --amarelo-forte: #e5bd3f;
+  --tinta: #f8f5ed;
+  --tinta-suave: #b8b0a3;
+}
+
+/* Fundo */
+:host-context(.escuro) {
+  background: #141210;
+}
+
+/* Formulário */
+:host-context(.escuro) form {
+  background: #1d1a17;
+  border-color: rgba(253, 230, 138, 0.12);
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.35),
+    0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Botão */
+:host-context(.escuro) button {
+  background: var(--amarelo);
+  color: #2b2620;
+}
+
+:host-context(.escuro) button:hover {
+  background: var(--amarelo-forte);
+  box-shadow: 0 8px 20px rgba(240, 195, 62, 0.15);
+}
+
+/* Mensagem de status */
+:host-context(.escuro) p {
+  background: #29251f;
+  color: rgba(250, 248, 243, 0.65);
+}
