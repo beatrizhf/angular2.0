@@ -10,7 +10,6 @@
   min-height: 100vh;
   padding: 40px 20px;
   box-sizing: border-box;
-
   font-family: "Sora", sans-serif;
   background: var(--creme);
 }
@@ -20,6 +19,9 @@
     padding: 20px;
     border-radius: 15px;
     font-size: 1em;
+    max-width: 60%;
+    align-items: center;
+    margin: 0 auto;
 }
 
 /* =========================

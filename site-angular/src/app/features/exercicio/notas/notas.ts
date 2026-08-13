@@ -20,23 +20,27 @@ export class Notas {
 
   alunoForm = form(this.alunoModel);
 
-
   cadastrarAluno(event: SubmitEvent) {
     event.preventDefault();
 
     const aluno = this.alunoModel();
 
+    if (aluno.nome === '') {
+      alert('Nome do aluno é obrigatório');
+      return;
+    }
+
     if (aluno.media === null || aluno.media < 0 || aluno.media > 10) {
       alert('Média inválida');
       return;
     }
+
     const situacao = aluno.media !== null && aluno.media >= 7 ? 'Aprovado' : 'Reprovado';
 
     const alunoComSituacao: Alunos = {
       ...aluno,
       situacao: situacao,
     };
-    console.log(alunoComSituacao);
 
     this.alunos.update(valor => [...valor, alunoComSituacao]); //*AQUI*//
 
@@ -48,3 +52,4 @@ export class Notas {
 
   }
 }
+
