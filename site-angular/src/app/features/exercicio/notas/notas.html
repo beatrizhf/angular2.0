@@ -14,7 +14,9 @@
 <h2>Lista de Alunos Cadastrados</h2>
 <div class="cadaAluno">
     @for (aluno of alunos(); track aluno.nome) {
-        <p> Aluno: {{aluno.nome}} | Média: {{aluno.media}} | {{aluno.situacao}}</p>
+      <div class="listaAluno">
+        <p> Aluno: {{aluno.nome}} | Média: {{aluno.media}} | <strong>{{aluno.situacao}}</strong></p>
+        </div>
     }
 
     @empty {
