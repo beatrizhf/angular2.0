@@ -9,14 +9,12 @@ import { Alunos } from '../alunos';
   styleUrl: './notas.css',
 })
 
-
 export class Notas {
  alunoModel = signal<Alunos>({
     nome: '',
     media: null,
     situacao: '',
   })
-
 
 protected alunos = signal<Alunos[]>([]); //*AQUI//*
 
@@ -28,14 +26,12 @@ cadastrarAluno(event : SubmitEvent) {
 
   const aluno = this.alunoModel();
 
-  const situacao = aluno.media !== null && aluno.media >= 7
-    ? 'Aprovado'
-    : 'Reprovado';
+  const situacao = aluno.media !== null && aluno.media >= 7 ? 'Aprovado' : 'Reprovado';
 
-    const alunoComSituacao: Alunos = {
+  const alunoComSituacao: Alunos = {
       ...aluno,
       situacao: situacao,
-    };
+  };
   console.log(alunoComSituacao);
 
   this.alunos.update(valor => [...valor, alunoComSituacao]); //*AQUI*//
@@ -46,5 +42,4 @@ cadastrarAluno(event : SubmitEvent) {
     situacao: '',
   });
 
-  
 }}
