@@ -1,11 +1,21 @@
 <form (submit)="cadastrarAluno($event)">
   <div>
     <label for="nome">Nome:</label>
-    <input type="text" id="nome" [formField]="alunoForm.nome">
+    <input type="text" placeholder="Nome" [formField]="alunoForm.nome">
+    @if (alunoForm.nome().touched() && alunoForm.nome().invalid()){
+      @for (error of alunoForm.nome().errors(); track error.kind) {
+        <span>{{error.message}}</span>
+      }
+    }
   </div>
   <div>
     <label for="media">Média:</label>
-    <input type="number" id="media" [formField]="alunoForm.media" step="0.01">
+    <input type="text" inputmode="numeric" placeholder="Média" [formField]="alunoForm.media" step="0.01">
+    @if (alunoForm.media().touched() && alunoForm.media().invalid()){
+      @for (error of alunoForm.media().errors(); track error.kind) {
+        <span>{{error.message}}</span>
+      }
+    }
   </div>
   <button type="submit">Cadastrar</button>
 </form>
@@ -15,8 +25,16 @@
 <div class="cadaAluno">
     @for (aluno of alunos(); track aluno.nome) {
       <div class="listaAluno">
-        <p> Aluno: {{aluno.nome}} | Média: {{aluno.media}} | <strong>{{aluno.situacao}}</strong></p>
-        </div>
+        <p> Aluno: {{aluno.nome}} | Média: {{aluno.media}} | </p> 
+      
+    @if (aluno.media !== null) {
+          @if (aluno.media >= 7) {
+          <strong><p style="color: rgb(61, 94, 2);"> Aprovado</p></strong>
+        } @else {
+          <strong><p style="color: rgb(138, 24, 24);"> Reprovado</p></strong>
+        }
+      }
+      </div>
     }
 
     @empty {

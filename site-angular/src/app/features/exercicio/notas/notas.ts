@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { form, FormField } from '@angular/forms/signals';
+import { form, FormField, max, min, required } from '@angular/forms/signals';
 import { Alunos } from '../alunos';
 
 @Component({
@@ -10,46 +10,34 @@ import { Alunos } from '../alunos';
 })
 
 export class Notas {
-  alunoModel = signal<Alunos>({
+  protected alunoModel = signal<Alunos>({
     nome: '',
     media: null,
-    situacao: '',
   })
 
-  protected alunos = signal<Alunos[]>([]); //*AQUI//*
+  protected alunoForm = form(this.alunoModel, (s) => {
+    required(s.nome, { message: 'O nome é obrigatório'});
+    required(s.media, { message: 'A média é obrigatório'});
 
-  alunoForm = form(this.alunoModel);
+    min(s.media, 0, { message: 'Média não pode ser menor que 0'});
+    max(s.media, 10, { message: 'Média não pode ser maior que 0'});
+  });
 
-  cadastrarAluno(event: SubmitEvent) {
+  protected alunos = signal<Alunos[]>([]); //*Criação do Array vazia do aluno//*
+
+  protected cadastrarAluno(event: SubmitEvent) {
     event.preventDefault();
 
-    const aluno = this.alunoModel();
+    const aluno = this.alunoModel(); //*Aqui seria o final do cadastro, pega as infos do form e coloca no alunoModel (fonte da verdade) dá para usar aqui o console.log aluno para verificar//*
 
-    if (aluno.nome === '') {
-      alert('Nome do aluno é obrigatório');
-      return;
-    }
-
-    if (aluno.media === null || aluno.media < 0 || aluno.media > 10) {
-      alert('Média inválida');
-      return;
-    }
-
-    const situacao = aluno.media !== null && aluno.media >= 7 ? 'Aprovado' : 'Reprovado';
-
-    const alunoComSituacao: Alunos = {
-      ...aluno,
-      situacao: situacao,
-    };
-
-    this.alunos.update(valor => [...valor, alunoComSituacao]); //*AQUI*//
+    this.alunos.update(valor => [...valor, aluno]); //*Aqui criou o card por fora do cadastro*//
 
     this.alunoModel.set({
       nome: '',
       media: null,
-      situacao: '',
     });
-
   }
 }
+
+ 
 
