@@ -4,10 +4,11 @@ import { Form } from "./form/form";
 import { Login } from "./login/login";
 import { Notas } from "./notas/notas";
 import { Votar } from "./votar/votar";
+import { Lista } from "./lista/lista";
 
 @Component({
   selector: 'app-exercicio',
-  imports: [ArrayUsuarios, Form, Login, Notas, Votar],
+  imports: [ArrayUsuarios, Form, Login, Notas, Votar, Lista],
   templateUrl: './exercicio.html',
   styleUrl: './exercicio.css',
 })

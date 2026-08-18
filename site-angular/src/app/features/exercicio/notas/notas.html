@@ -23,7 +23,7 @@
 <div class="listaItens">
 <h2>Lista de Alunos Cadastrados</h2>
 <div class="cadaAluno">
-    @for (aluno of alunos(); track aluno.nome) {
+    @for (aluno of notasService.alunos(); track aluno.nome) {
       <div class="listaAluno">
         <p> Aluno: {{aluno.nome}} | Média: {{aluno.media}} | </p> 
       

@@ -26,7 +26,6 @@ votarCandidato1() {
   candidato.qtvotos++;
   this.candidato1.set(candidato); 
 
-
 }
 
 votarCandidato2() {

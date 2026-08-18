@@ -1,0 +1,14 @@
+<h1>Lista de Compras</h1>
+<form (submit)="cadastrarItem($event)">
+    <label for="item">Item:</label>
+    <input type="text" placeholder="Item" [formField]="listaForm.item">
+    <button type="submit">Adicionar</button>
+</form>
+
+<div class="listaItensCompra">
+<h2>Lista de Compras</h2>
+    @for (item of item(); track $index) {
+        <p>{{ item.item }}</p>
+}
+    
+</div>

@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { form, FormField, max, min, required } from '@angular/forms/signals';
 import { Alunos } from '../alunos';
+import { NotasService } from './notas-service';
 
 @Component({
   selector: 'app-notas',
@@ -10,6 +11,10 @@ import { Alunos } from '../alunos';
 })
 
 export class Notas {
+
+protected readonly notasService = inject(NotasService);
+
+
   protected alunoModel = signal<Alunos>({
     nome: '',
     media: null,
@@ -23,14 +28,14 @@ export class Notas {
     max(s.media, 10, { message: 'Média não pode ser maior que 0'});
   });
 
-  protected alunos = signal<Alunos[]>([]); //*Criação do Array vazia do aluno//*
+  //protected alunos = signal<Alunos[]>([]); (Criação do Array vazia do aluno) Removi pois ficou na aba de service
 
   protected cadastrarAluno(event: SubmitEvent) {
     event.preventDefault();
 
     const aluno = this.alunoModel(); //*Aqui seria o final do cadastro, pega as infos do form e coloca no alunoModel (fonte da verdade) dá para usar aqui o console.log aluno para verificar//*
 
-    this.alunos.update(valor => [...valor, aluno]); //*Aqui criou o card por fora do cadastro*//
+    this.notasService.cadastrarAluno(aluno); // Aqui chamei a função do service
 
     this.alunoModel.set({
       nome: '',
