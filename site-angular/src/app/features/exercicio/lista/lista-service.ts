@@ -1,5 +1,5 @@
 import { Service, signal } from '@angular/core';
-import { Itens } from './itens';
+import { Itens } from '../../itens';
 
 @Service()
 export class ListaService {
