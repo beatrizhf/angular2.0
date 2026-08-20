@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { Itens } from '../../itens';
 import { form, FormField } from '@angular/forms/signals';
 import { NotasService } from '../notas/notas-service';
+import { ListaService } from './lista-service';
 
 @Component({
   selector: 'app-lista',
@@ -26,15 +27,15 @@ export class Lista {
     return;
   }
 
-  this.item.update((itens) => [
-    ...itens,
-    { item: novoItem },
+  this.item.update((itens) => [...itens, { item: novoItem },
   ]);
 
   this.itensModel.set({ item: '' });
 }
 
-  protected readonly notasService = inject(NotasService);
-
   protected listaForm = form(this.itensModel, (s) => {})
+
+  protected readonly listaService = inject(ListaService);
+
+  
 }

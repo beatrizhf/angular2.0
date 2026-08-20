@@ -1,14 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { email, form, FormField, required } from '@angular/forms/signals';
-import { Data } from '@angular/router';
+import { LoginService } from './login-service';
+import { LoginInterface } from './login-interface';
 
-interface loginInterface {
-  nome: string;
-  email: string;
-  senha: string;
-  confirma: string;
-  nascimento: string;
-}
 
 @Component({
   selector: 'app-login',
@@ -19,13 +13,14 @@ interface loginInterface {
 
 export class Login {
 
-protected loginModel = signal<loginInterface>({
-  nome: '',
-  email: '',
-  senha: '',
-  confirma: '',
-  nascimento: '',
+  protected readonly loginService = inject(LoginService)
 
+  protected loginModel = signal<LoginInterface>({
+    nome: '',
+    email: '',
+    senha: '',
+    confirma: '',
+    nascimento: '',
 });
 
 protected loginForm = form(this.loginModel, (s) => {
@@ -41,7 +36,8 @@ protected efetuarLogin(event: SubmitEvent) {
 
   const login = this.loginModel();
 
-  if(login.email === 'bia@gmail.com' && login.senha === '123') {
-    this.estaLogado.set(true);
-  }
+  this.loginService.autenticarUsuario(login);
+  
+  this.loginForm().reset();
+  
 }}

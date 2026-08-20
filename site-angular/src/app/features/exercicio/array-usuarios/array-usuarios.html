@@ -1,6 +1,5 @@
-<p>array-usuarios funciona</p>
 
-@for (usuario of usuarios(); track usuario.id) {
+@for (usuario of arrayUsuariosService.usuarios(); track usuario.id) {
   <div class="usuario-card">
     <p>Id: {{ usuario.id }}</p>
     <p>Nome: {{ usuario.nome }}</p>

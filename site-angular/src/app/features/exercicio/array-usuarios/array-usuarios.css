@@ -1,0 +1,80 @@
+:host {
+  --creme: #fffdf9;
+  --amarelo: #fde68a;
+  --amarelo-forte: #f0c33e;
+  --tinta: #2b2620;
+  --tinta-suave: #6b6255;
+
+  display: block;
+  min-height: 100vh;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  font-family: "Sora", sans-serif;
+  background: var(--creme);
+}
+
+/* Container implícito da lista */
+.usuario-card {
+  width: min(100%, 500px);
+  margin: 0 auto 16px;
+
+  padding: 22px 24px;
+
+  box-sizing: border-box;
+
+  background: #ffffff;
+  border: 2px solid var(--amarelo);
+  border-radius: 18px;
+
+  box-shadow: 0 6px 0 var(--amarelo);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.usuario-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--amarelo-forte);
+  box-shadow: 0 9px 0 var(--amarelo-forte);
+}
+
+.usuario-card p {
+  margin: 8px 0;
+  color: var(--tinta-suave);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.usuario-card p:first-child {
+  color: var(--tinta);
+  font-weight: 700;
+}
+
+.usuario-card p:nth-child(2) {
+  color: var(--tinta);
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.usuario-card p:nth-child(3) {
+  margin-bottom: 0;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  :host {
+    padding: 24px 16px;
+  }
+
+  .usuario-card {
+    padding: 18px 20px;
+    border-radius: 15px;
+  }
+
+  .usuario-card p:nth-child(2) {
+    font-size: 18px;
+  }
+}
