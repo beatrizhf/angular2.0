@@ -36,6 +36,9 @@ protected efetuarLogin(event: SubmitEvent) {
 
   const login = this.loginModel();
 
+  this.estaLogado.set(this.loginService.autenticarUsuario(login)
+  )
+  
   this.loginService.autenticarUsuario(login);
   
   this.loginForm().reset();
