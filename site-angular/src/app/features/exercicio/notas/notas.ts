@@ -14,7 +14,6 @@ export class Notas {
 
 protected readonly notasService = inject(NotasService);
 
-
   protected alunoModel = signal<Alunos>({
     nome: '',
     media: null,

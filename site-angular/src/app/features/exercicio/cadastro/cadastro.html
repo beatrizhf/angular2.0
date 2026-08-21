@@ -1,0 +1,17 @@
+<h2>Cadastro API</h2>
+<form (submit)="efetuarCadastro($event)">
+    <input type="text" placeholder="Id" [formField]="cadastroForm.id">
+    <input type="text" placeholder="Título" [formField]="cadastroForm.titulo">
+    <input type="text" placeholder="Corpo" [formField]="cadastroForm.corpo">
+    <button>Enviar</button>
+</form>
+
+<div class="listaCadastro">
+<h2>Lista de Cadastrados</h2>
+    @for (cadastrado of cadastroService.cadastrados() ; track cadastrado.id) {
+      <div class="cadaCadastro">
+        <p> Id: {{cadastrado.id}}</p> 
+        <p> Título: {{cadastrado.titulo}}</p> 
+        <p> Corpo: {{cadastrado.corpo}}</p> 
+      </div>
+      }
